@@ -54,7 +54,7 @@ async function getTermsOfUse (currentUser, termsOfUseId, query) {
 
   // get terms of use
   const result = await TermsOfUse.findAll({
-    attributes: ['id', 'title', 'url', 'text', 'agreeabilityTypeId'],
+    attributes: ['id', 'title', 'url', 'text', 'agreeabilityTypeId', 'legacyId', 'typeId'],
     include,
     where: { id: termsOfUseId, deletedAt: null },
     raw: true
@@ -89,7 +89,6 @@ function convertRawData (termsOfUse, throwError = true) {
   } else {
     delete termsOfUse.docusignTemplateId
   }
-  delete termsOfUse.agreeabilityTypeId
 
   return _.omitBy(termsOfUse, _.isNull)
 }
