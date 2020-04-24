@@ -45,6 +45,18 @@ const agreeabilityTypeIdsMapping = {
 
 const insertData = async () => {
   await TermsOfUseAgreeabilityType.create({
+    id: agreeabilityTypeIdsMapping[1],
+    legacyId: 1,
+    name: 'Non-agreeable',
+    description: 'Non-agreeable'
+  })
+  await TermsOfUseAgreeabilityType.create({
+    id: agreeabilityTypeIdsMapping[2],
+    legacyId: 2,
+    name: 'Non-electronically-agreeable',
+    description: 'Non-electronically-agreeable'
+  })
+  await TermsOfUseAgreeabilityType.create({
     id: agreeabilityTypeIdsMapping[3],
     legacyId: 3,
     name: 'Electronically-agreeable',
