@@ -168,7 +168,7 @@ async function agreeTermsOfUse (currentUser, termsOfUseId) {
   }
   await UserTermsOfUseXref.create(body)
 
-  await helper.postEvent(config.USER_AGREED_TERMS_TOPIC, body)
+  // await helper.postEvent(config.USER_AGREED_TERMS_TOPIC, body)
 
   return { success: true }
 }
@@ -215,7 +215,7 @@ async function createTermsOfUse (currentUser, termsOfUse) {
       docusignTemplateId: termsOfUse.docusignTemplateId
     })
   }
-  await helper.postEvent(config.TERMS_CREATE_TOPIC, termsOfUse)
+  // await helper.postEvent(config.TERMS_CREATE_TOPIC, termsOfUse)
 
   return created
 }
@@ -285,7 +285,7 @@ async function updateTermsOfUse (currentUser, termsOfUseId, data, isFull) {
     data.docusignTemplateId = docusignTemplateXref.docusignTemplateId
   }
   const result = helper.clearObject(_.assign(termsOfUse.dataValues, data))
-  await helper.postEvent(config.TERMS_UPDATE_TOPIC, result)
+  // await helper.postEvent(config.TERMS_UPDATE_TOPIC, result)
 
   return result
 }
@@ -338,7 +338,7 @@ fullyUpdateTermsOfUse.schema = {
 async function deleteTermsOfUse (termsOfUseId) {
   const termsOfUse = await helper.ensureExists(TermsOfUse, { id: termsOfUseId, deletedAt: null }, false)
   await termsOfUse.update({ deletedAt: new Date() })
-  await helper.postEvent(config.TERMS_DELETE_TOPIC, { termsOfUseId })
+  // await helper.postEvent(config.TERMS_DELETE_TOPIC, { termsOfUseId })
 }
 
 deleteTermsOfUse.schema = {
